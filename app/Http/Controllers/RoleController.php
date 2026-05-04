@@ -7,7 +7,13 @@ use Illuminate\Support\Facades\Http;
 
 class RoleController extends Controller
 {
-    private string $apiUrl = 'http://localhost:8000/api';
+
+    protected string $apiUrl;
+
+    public function __construct()
+    {
+        $this->apiUrl = config('services.api.base_url');
+    }
 
     /**
      * Display a listing of the resource.

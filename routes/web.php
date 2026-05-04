@@ -2,11 +2,24 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RoleController;
 
-// dashboard pages
-Route::get('/', function () {
-    return view('pages.dashboard.ecommerce', ['title' => 'E-commerce Dashboard']);
-})->name('dashboard');
+// authentication routes
+Route::get('/', fn() => redirect()->route('signin'));
+// Route::middleware('guest.session')->group(function () {
+    Route::get('/signin', fn() => view('pages.auth.signin'))->name('signin');
+    Route::post('/signin', [AuthController::class, 'login'])->name('signin.post');
+    Route::get('/signup', fn() => view('pages.auth.signup'))->name('signup');
+// });
+
+Route::middleware('web')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    
+    // Role management
+    Route::resource('roles', RoleController::class);
+});
 
 // calender pages
 Route::get('/calendar', function () {
@@ -53,6 +66,8 @@ Route::get('/bar-chart', function () {
 Route::get('/signin', function () {
     return view('pages.auth.signin', ['title' => 'Sign In']);
 })->name('signin');
+
+// Route::post('/signin', [AuthController::class, 'login'])->name('signin.post');
 
 Route::get('/signup', function () {
     return view('pages.auth.signup', ['title' => 'Sign Up']);

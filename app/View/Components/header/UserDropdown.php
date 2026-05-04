@@ -11,9 +11,11 @@ class UserDropdown extends Component
     /**
      * Create a new component instance.
      */
+    public $user;
+
     public function __construct()
     {
-        //
+        $this->user = session('user');
     }
 
     /**
@@ -21,6 +23,10 @@ class UserDropdown extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.header.user-dropdown');
+        // return view('components.header.user-dropdown');
+
+        return view('components.header.user-dropdown', [
+            'user' => session('user')
+        ]);
     }
 }

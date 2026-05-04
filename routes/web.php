@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommisionController;
 use App\Http\Controllers\RoleController;
 
 // authentication routes
@@ -17,7 +18,9 @@ Route::middleware('web')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     
-    // Role management
+    // commision management
+    Route::resource('commision', CommisionController::class);
+    // role management
     Route::resource('roles', RoleController::class);
 });
 

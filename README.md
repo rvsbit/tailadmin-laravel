@@ -1,3 +1,8 @@
+<pre>
+    This project is using tailadmin-laravel-main
+    Please go to <pre>cd code/tailadmin-laravel-main</pre>
+</pre>
+
 ## How to run this folder
 Run this command inside this folder
 <pre>php artisan serve</pre>

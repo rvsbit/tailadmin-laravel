@@ -135,7 +135,7 @@
 
                             @foreach ($statuses as $value => $label)
                                 <option value="{{ $value }}"
-                                    {{ old('status', $user['status'] ?? '') == $value ? 'selected' : '' }}>
+                                    {{ (string) old('status', $users['status'] ?? '') === (string) $value ? 'selected' : '' }}>
                                     {{ $label }}
                                 </option>
                             @endforeach

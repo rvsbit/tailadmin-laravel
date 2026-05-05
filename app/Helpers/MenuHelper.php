@@ -13,6 +13,12 @@ class MenuHelper
                 'path' => '/dashboard',
             ],
             [
+                'icon' => 'user-profile',
+                'name' => 'Users',
+                'path' => '/users',
+            ],
+            
+            [
                 'icon' => 'roles',
                 'name' => 'Roles',
                 'path' => '/roles',

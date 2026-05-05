@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommisionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SalesController;
+use App\Http\Controllers\UserController;
 
 // authentication routes
 Route::get('/', fn() => redirect()->route('signin'));
@@ -28,6 +29,9 @@ Route::middleware('web')->group(function () {
     // sales management
     Route::resource('sales', SalesController::class);
     Route::get('/sales', [SalesController::class, 'index'])->name('sales.index');
+
+    // users management
+    Route::resource('users', UserController::class);
 });
 
 // calender pages
